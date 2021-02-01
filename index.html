@@ -50,21 +50,23 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label id="firstClassFlightTotal" for="">First Class ($150)</label>
+                    <input id="firstClassFlightCount" class="inp-style inp-width" type="number" name="" placeholder="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    <button id="firstClassFlightIncrease" class="btn-style">+</button>
+                    <button id="firstClassFlightDecrease" class="btn-style">-</button>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label id="economyFlightTotal" for="">Economy ($100)</label>
+                    <input id="economyFlightCount" class="inp-style inp-width" type="number" name="" placeholder="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <button id="economyFlightIncrease" class="btn-style">+</button>
+                    <button id="economyFlightDecrease" class="btn-style">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -73,7 +75,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="subtotalAmount">$500</p>
                     </div>
                 </div>
 
@@ -82,7 +84,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="vatAmount">$50</p>
                     </div>
                 </div>
                 <hr>
@@ -91,18 +93,84 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="totalAmount">$550</p>
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button onclick="myFunction()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
         </div>
-    </section>
+        <script>
+            document.getElementById("firstClassFlightIncrease").addEventListener('click',function(){
+                const flightInput = document.getElementById('firstClassFlightCount');
+                const firstClassFlightCount = parseInt(flightInput.value);
+                const flightNewCount = firstClassFlightCount + 1;
+                flightInput.value = flightNewCount;
+                const firstClassFlightTotal = flightNewCount * 150;
+                document.getElementById('firstClassFlightTotal').innerText = 'First Class $' + firstClassFlightTotal;
+                const subtotalAmount = flightNewCount * 150 + economyFlightIncrease * 100;
+                document.getElementById('subtotalAmount').innerText = '$' + subtotalAmount;
+                const vatAmount = flightNewCount * 10;
+                document.getElementById('vatAmount').innerText = '$' + vatAmount;
+                const totalAmount = flightNewCount * 150 + vatAmount;
+                document.getElementById('totalAmount').innerText = '$' + totalAmount;
+                
+            });
+
+            document.getElementById("firstClassFlightDecrease").addEventListener('click',function(){
+                const flightInput = document.getElementById('firstClassFlightCount');
+                const firstClassFlightCount = parseInt(flightInput.value);
+                const flightNewCount = firstClassFlightCount - 1;
+                flightInput.value = flightNewCount;
+                const firstClassFlightTotal = flightNewCount * 150;
+                document.getElementById('firstClassFlightTotal').innerText = 'First Class $' + firstClassFlightTotal;
+                const subtotalAmount = flightNewCount * 150;
+                document.getElementById('subtotalAmount').innerText = '$' + subtotalAmount;
+                const vatAmount = flightNewCount * 10;
+                document.getElementById('vatAmount').innerText = '$' + vatAmount;
+                const totalAmount = flightNewCount * 150 + vatAmount;
+                document.getElementById('totalAmount').innerText = '$' + totalAmount;
+                document.getElementById('totalAmount').innerText = '$' + totalAmount;
+            });
+
+            document.getElementById("economyFlightIncrease").addEventListener('click',function(){
+                const flightInput = document.getElementById('economyFlightCount');
+                const economyFlightCount = parseInt(flightInput.value);
+                const flightNewCount = economyFlightCount + 1;
+                flightInput.value = flightNewCount;
+                const economyFlightTotal = flightNewCount * 100;
+                document.getElementById('economyFlightTotal').innerText = 'Economy $' + economyFlightTotal;
+                const subtotalAmount = flightNewCount * 100;
+                document.getElementById('subtotalAmount').innerText = '$' + subtotalAmount;
+                const vatAmount = flightNewCount * 10;
+                document.getElementById('vatAmount').innerText = '$' + vatAmount;
+                const totalAmount = flightNewCount * 100 + vatAmount;
+                document.getElementById('totalAmount').innerText = '$' + totalAmount;
+            });
+
+            document.getElementById("economyFlightDecrease").addEventListener('click',function(){
+                const flightInput = document.getElementById('economyFlightCount');
+                const economyFlightCount = parseInt(flightInput.value);
+                const flightNewCount = economyFlightCount - 1;
+                flightInput.value = flightNewCount;
+                const economyFlightTotal = flightNewCount * 100;
+                document.getElementById('economyFlightTotal').innerText = 'Economy $' + economyFlightTotal;
+                const subtotalAmount = flightNewCount * 100;
+                document.getElementById('subtotalAmount').innerText = '$' + subtotalAmount;
+                const vatAmount = flightNewCount * 10;
+                document.getElementById('vatAmount').innerText = '$' + vatAmount;
+                const totalAmount = flightNewCount * 100 + vatAmount;
+                document.getElementById('totalAmount').innerText = '$' + totalAmount;
+            });
+
+            function myFunction(){
+                alert("Booking has been successful");
+            }
+        </script>
 
     <!--Thank You-->
 </body>
